@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="考場快速指南：按症狀分類、常用修法、程式模板與邊界檢查，附完整觀念筆記。"><title>成大資工考場速查筆記</title><style>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="清楚分類的成大資工上機筆記，從名詞、例子到逐步追蹤，整理 C、位元、Engine、PIO、DMA、pthread、ROS 2 與封包。"><title>成大資工上機筆記</title><style>
 :root{--ink:#233730;--muted:#69746f;--accent:#23634d;--line:#dce4df;--soft:#eef4ef;--paper:#fcfcfa;--mono:Consolas,'SFMono-Regular',monospace;font-family:system-ui,'Microsoft JhengHei','PingFang TC',sans-serif;color:var(--ink);background:var(--paper);color-scheme:light}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;line-height:1.85;font-size:16px}button,input,select{font:inherit}button,summary{cursor:pointer}a{color:var(--accent);text-underline-offset:4px}a:hover{color:#0b412c}button:focus-visible,a:focus-visible,summary:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #9bc9b0;outline-offset:4px}h2:focus{outline:none}[hidden]{display:none!important}.skip{position:fixed;top:8px;left:16px;z-index:9;background:white;padding:8px 16px;transform:translateY(-160%)}.skip:focus{transform:none}.sidebar{position:fixed;left:0;top:0;bottom:0;width:254px;background:linear-gradient(145deg,#eef4edee,#f1f5f1e6);backdrop-filter:blur(20px);border-right:1px solid #dce5dc;z-index:3;display:flex;flex-direction:column}.sidebar-top{padding:30px 23px 22px}.brand{display:flex;align-items:center;gap:13px;color:var(--ink);text-decoration:none;font-weight:650;font-size:18px;line-height:1.5}.brand small{display:block;font-size:10px;font-weight:550;letter-spacing:1.4px;color:var(--muted);margin-top:2px}.brand-mark{width:42px;height:42px;background:#fff9;border:1px solid white;box-shadow:0 2px 10px #31544008;border-radius:12px;display:grid;place-items:center;font-family:var(--mono);font-size:14px;color:var(--accent)}.sidebar-body{padding:0 15px 20px;overflow:auto;display:flex;flex-direction:column;flex:1}.nav-label{font-size:11px;letter-spacing:1.2px;color:var(--muted);font-weight:600;margin:8px 13px 12px}.sidebar nav{display:grid;gap:4px}.sidebar nav a{display:flex;align-items:center;gap:12px;border:1px solid transparent;border-radius:8px;text-decoration:none;color:#56655c;padding:8px 12px;font-size:14px}.nav-no{font:11px var(--mono);color:#8c9c90}.sidebar nav a:hover{background:#ffffff8a}.sidebar nav a[aria-current=page]{background:#ffffffd9;border-color:#fff;box-shadow:0 2px 8px #193f2a05;color:var(--accent);font-weight:650}.sidebar nav a[aria-current=page] .nav-no{color:var(--accent)}.sidebar-bottom{margin-top:auto;padding:35px 13px 0;font-size:12px;color:var(--muted)}.sidebar-bottom p{line-height:1.8;margin-bottom:18px}.sidebar-bottom>span{font-size:10px;letter-spacing:.5px;color:#88918b}#menu{display:none}.workspace{margin-left:254px}.toolbar{position:sticky;top:0;z-index:2;height:66px;border-bottom:1px solid #e5e9e5;background:#fcfcfae8;backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-between;padding:0 38px;font-size:12px;color:var(--muted)}.toolbar>div{display:flex;gap:9px;align-items:center}.status-dot{width:6px;height:6px;background:#81a98d;border-radius:50%}.toolbar button{font-size:12px;border:1px solid var(--line);background:#fff9;border-radius:6px;padding:5px 10px;color:#435b4c}.toolbar button:hover{border-color:#93b29e}.reading-layout{display:grid;grid-template-columns:minmax(0,780px) 184px;gap:42px;max-width:1110px;margin:auto;padding:45px 42px 80px}main{min-width:0}.page-head{padding-bottom:25px;margin-bottom:10px;border-bottom:1px solid var(--line)}.eyebrow{font-size:11px;letter-spacing:.8px;color:#708577;margin:0 0 14px}h2{font-size:35px;letter-spacing:-1px;line-height:1.4;margin:0 0 14px;font-weight:650}.lead{color:var(--muted);font-size:15px;line-height:1.85;margin:0;max-width:650px}.note{padding:28px 0 31px;border-bottom:1px solid var(--line);scroll-margin-top:90px}.note:last-child{border-bottom:0}.note h3{font-size:19px;line-height:1.55;letter-spacing:-.25px;font-weight:650;margin:0 0 17px;color:#254e3b}.note p{margin:12px 0}.note ol,.note ul{padding-left:23px}.note li{padding-left:4px;margin:8px 0}.note strong{font-weight:650}.callout{padding:14px 18px;margin:19px 0;background:var(--soft);border-left:3px solid #83a98c;color:#375444;font-size:14px;border-radius:0 6px 6px 0}.table-wrap{overflow-x:auto;margin:16px 0}table{border-collapse:collapse;width:100%;font-size:13.5px;line-height:1.75;text-align:left}th,td{border-bottom:1px solid var(--line);padding:11px 13px;vertical-align:top}th{background:#f0f4ef;color:#48634e;font-weight:600}td:first-child{color:#2e5040}th:first-child{min-width:110px}table a{font-weight:500}code{font-family:var(--mono);font-size:.87em;background:#eef1eb;padding:2px 5px;border-radius:3px;overflow-wrap:anywhere}pre{overflow-x:auto;border:1px solid #dce4dd;border-radius:7px;background:#f3f6f2;padding:18px 20px;margin:18px 0;line-height:1.75;tab-size:4;color:#254535}pre code{padding:0;background:none;border-radius:0;font-size:12px;overflow-wrap:normal;white-space:pre}.bit-layout{display:flex;gap:7px;margin:18px 0}.bit-layout>div{border:1px solid var(--line);background:#f2f5f0;padding:12px 14px;border-radius:6px;flex:1;min-width:0}.bit-layout small{display:block;font-size:10px;color:var(--muted);margin-bottom:7px;white-space:nowrap}.bit-layout code{padding:0;background:none;font-size:15px;letter-spacing:1px}.outline{position:sticky;top:104px;align-self:start;font-size:11px;line-height:1.75;border-left:1px solid var(--line);padding-left:17px;max-height:calc(100vh - 130px);overflow:auto}.outline .nav-label{margin:0 0 15px;font-size:10px}.outline nav{display:grid;gap:12px}.outline nav a{color:#7a847c;text-decoration:none}.outline nav a:hover,.outline nav a[aria-current=true]{color:var(--accent)}.to-top{display:inline-block;border-top:1px solid var(--line);margin-top:25px;padding-top:13px;color:#687b6c;text-decoration:none;font-size:10px}footer{margin:0 42px;border-top:1px solid var(--line);padding:20px 0;color:#919991;font-size:11px}.question{background:white;border:1px solid var(--line);padding:22px 24px;margin:18px 0;border-radius:7px;scroll-margin-top:90px}.question header{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}.question h3{font-size:17px;margin:0}.number{font:12px var(--mono);color:#779281;margin-right:9px}.tag{font-size:10px;padding:2px 6px;background:var(--soft);color:var(--accent);border-radius:4px}.question p{font-size:14px}.question summary{font-size:13px;color:var(--accent);font-weight:600}.answer{background:#f0f6f0;border-left:2px solid #8cac95;margin-top:12px;padding:2px 13px}.done{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);margin-top:17px}.done input,.controls input{accent-color:var(--accent)}.controls{display:flex;flex-wrap:wrap;gap:12px 20px;padding:15px 0;font-size:12px;border-bottom:1px solid var(--line)}.controls label{display:flex;align-items:center;gap:7px}.controls select,.controls button{background:white;border:1px solid var(--line);padding:5px;border-radius:5px;color:var(--ink)}.controls output{color:var(--muted)}.controls button{font-size:11px}.page-nav{display:flex;justify-content:space-between;gap:15px;border-top:1px solid var(--line);padding-top:25px;margin-top:20px}.page-nav a{text-decoration:none;border:1px solid var(--line);border-radius:7px;padding:10px 15px;font-size:13px;background:white;max-width:48%}.page-nav small{display:block;color:var(--muted);font-size:10px}.page-nav .next{margin-left:auto;text-align:right}.sources{font-size:14px}.sources li{margin:12px 0}
 @media(min-width:1500px){.reading-layout{gap:62px;padding-top:55px}.sidebar{width:270px}.workspace{margin-left:270px}}
 @media(max-width:1150px){.outline{display:none}.reading-layout{display:block;max-width:850px;padding:36px 35px 65px}.toolbar{padding:0 35px}.sidebar{width:225px}.workspace{margin-left:225px}.sidebar-top{padding-left:20px}.sidebar nav a{padding:8px 10px;font-size:13px}.sidebar-body{padding-inline:12px}}
@@ -7,208 +7,10 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{@page{size:A4;margin:17mm 16mm}.sidebar,.toolbar,.outline,.page-nav,.skip,footer,.practice{display:none!important}.workspace{margin:0}.reading-layout{display:block;max-width:none;padding:0}.page,.page[hidden]{display:block!important;break-before:page}.page:first-child{break-before:auto}.page-head{margin:0 0 16px;padding:0 0 12px}.eyebrow{font-size:9px}h2{font-size:25px}.lead{font-size:11px}.note{padding:13px 0}.note h3{font-size:15px;break-after:avoid}.note p,.note li,.callout{font-size:10px;line-height:1.7}.note p{orphans:3;widows:3}.table-wrap{overflow:visible}table{font-size:9px}tr,pre,.callout{break-inside:avoid}th,td{padding:6px 8px;font-size:9px}pre{white-space:pre-wrap;overflow:visible;padding:10px}pre code{white-space:pre-wrap;overflow-wrap:anywhere;font-size:8px}a{color:inherit}body{background:white}.practice[hidden]{display:none!important}}
 
-
-.nav-group{font-size:10px;font-weight:650;color:#789080;padding:16px 12px 4px;letter-spacing:1px}.sidebar-body .nav-label{display:none}.sidebar-bottom{padding-top:20px}.quick-page .note{padding-block:23px}.quick-page .note h3{font-size:18px}.quick-page table{font-size:13px}.quick-page pre{margin-top:12px}.print-actions{display:flex!important;gap:7px}.copy-code{position:absolute;right:7px;top:7px;font:10px system-ui,sans-serif;border:1px solid #cbd9ce;background:#fffffff2;border-radius:4px;color:#486752;padding:3px 7px;cursor:pointer}pre{position:relative;padding-top:32px}.copy-code:focus-visible{outline:2px solid #508862}.quick-page .page-head{border-bottom:2px solid #a1baa7}.quick-page .callout{font-size:13px}.sidebar nav a{padding-block:6px}.sidebar-body{scrollbar-width:thin}.sidebar .brand small{letter-spacing:1px}
-@media(max-width:720px){.nav-group{grid-column:1/-1}.toolbar{padding-inline:14px}.toolbar button{padding:4px 6px;font-size:10px}.print-actions{gap:4px}.toolbar>div:first-child{max-width:44%}.copy-code{font-size:10px}pre{padding-top:32px}.sidebar nav a{padding-block:8px}}
-@media print{.copy-code{display:none!important}body.print-quick .page:not(.quick-page){display:none!important}body.print-quick .quick-page{display:block!important}body.print-quick .quick-page .page-head{padding-bottom:9px}body.print-quick .quick-page .note{padding-block:10px}body.print-quick .quick-page pre{padding-top:9px}body.print-quick .quick-page .note h3{font-size:13px}}
 </style></head><body>
 <a class="skip" href="#main">跳到筆記內容</a>
-<aside class="sidebar" id="sidebar"><div class="sidebar-top"><a class="brand" href="#exam"><span class="brand-mark">XM</span><span>考場速查<small>NCKU CSIE · 116</small></span></a><button type="button" id="menu" aria-controls="chapter-nav" aria-expanded="false">分類目錄 <span>⌄</span></button></div><div class="sidebar-body" id="chapter-nav"><p class="nav-label">筆記分類</p><nav aria-label="筆記分類"><span class="nav-group">考場速查</span><a href="#exam" data-page="exam"><span class="nav-no">00</span><span>考場入口</span></a><a href="#qbit" data-page="qbit"><span class="nav-no">01</span><span>位元速查</span></a><a href="#qmove" data-page="qmove"><span class="nav-no">02</span><span>搬運與索引</span></a><a href="#qpio" data-page="qpio"><span class="nav-no">03</span><span>PIO 修法</span></a><a href="#qthread" data-page="qthread"><span class="nav-no">04</span><span>pthread 模板</span></a><a href="#qros" data-page="qros"><span class="nav-no">05</span><span>ROS 2 修法</span></a><a href="#qserial" data-page="qserial"><span class="nav-no">06</span><span>接收與封包</span></a><a href="#qcmd" data-page="qcmd"><span class="nav-no">07</span><span>指令與邊界</span></a><span class="nav-group">完整觀念筆記</span><a href="#overview" data-page="overview"><span class="nav-no">00</span><span>閱讀起點</span></a><a href="#c" data-page="c"><span class="nav-no">01</span><span>C 與記憶體</span></a><a href="#bits" data-page="bits"><span class="nav-no">02</span><span>位元與打包</span></a><a href="#engine" data-page="engine"><span class="nav-no">03</span><span>Engine 搬運</span></a><a href="#pio" data-page="pio"><span class="nav-no">04</span><span>PIO 指令</span></a><a href="#dma" data-page="dma"><span class="nav-no">05</span><span>DMA 與回傳</span></a><a href="#threads" data-page="threads"><span class="nav-no">06</span><span>pthread</span></a><a href="#ros" data-page="ros"><span class="nav-no">07</span><span>ROS 2</span></a><a href="#packets" data-page="packets"><span class="nav-no">08</span><span>序列埠與封包</span></a><a href="#debug" data-page="debug"><span class="nav-no">09</span><span>除錯速查</span></a><a href="#practice" data-page="practice"><span class="nav-no">10</span><span>練習題</span></a></nav><div class="sidebar-bottom"><p>看懂資料的位置，<br>再看誰讀寫、何時完成。</p><span>整理於 2026.11.12</span></div></div></aside>
-<div class="workspace"><header class="toolbar"><div><span class="status-dot"></span><span id="current-category">考場入口</span></div><div class="print-actions"><button type="button" id="print-quick">列印速查</button><button type="button" id="print">列印全部</button></div></header><div class="reading-layout"><main id="main"><section class="page quick-page" id="exam" aria-labelledby="heading-exam"><header class="page-head"><p class="eyebrow">考場速查 / 先看修法，再看原理</p><h2 id="heading-exam" tabindex="-1">考場入口</h2><p class="lead">先用症狀找對頁。每個模板都標明前提，替換題目提供的名稱與規格再使用。</p></header><article class="note" id="quick-route"><h3>01　遇到這個問題，直接看這裡</h3><div class="table-wrap"><table><thead><tr><th>問題／需求</th><th>快速跳轉</th></tr></thead><tbody><tr><td><strong>程式卡住、不再輸出</strong></td><td><a href="#quick-stuck">等待與卡住檢查</a></td></tr><tr><td>欄位取錯、新舊參數混在一起</td><td><a href="#qbit-fields">打包、拆解、改參數</a></td></tr><tr><td>count 寫多少？陣列會不會超出？</td><td><a href="#qmove-range">容量與單位計算</a></td></tr><tr><td>PIO 回傳錯值、一直回第一筆</td><td><a href="#qpio-echo">PIO 最小正確模板</a></td></tr><tr><td>RX 等不到、資料切錯筆</td><td><a href="#qmove-offset">rx_count／offset 模板</a></td></tr><tr><td>A／B 共用陣列，什麼時候能覆蓋？</td><td><a href="#qmove-batch">重用時機表</a></td></tr><tr><td>thread 數錯、卡鎖、結果還沒寫好</td><td><a href="#qthread-worker">pthread 領工作模板</a></td></tr><tr><td>ROS 收不到／一直倍增／timer 錯誤</td><td><a href="#qros-errors">ROS 常見修法</a></td></tr><tr><td>序列埠少收、錯位、重複印同一筆</td><td><a href="#qserial-buffer">buffer 接收模板</a></td></tr><tr><td>找檔、編譯、進容器、ROS 指令</td><td><a href="#qcmd">終端指令速查</a></td></tr></tbody></table></div></article><article class="note" id="quick-steps"><h3>02　拿到題目的前 5 分鐘</h3><ol><li>找 README、題目、標頭檔與 TODO；先用原本指令跑一次，記下失敗位置。</li><li>寫清楚輸入輸出：幾筆、每筆幾 bytes、每筆產生幾筆。</li><li>確認可修改範圍、固定介面、合法值與邊界條件。</li><li>用 1～3 筆不同值追蹤，再修改最小必要部分。</li><li>先驗證結果，再量時間；不要把大量 log 算進效能比較。</li></ol><aside class="callout">這是依 demo 與練習整理的速查，不是正式考題預測。Engine、概念 DMA API、旗標與封包規格，全部以附檔為準。</aside></article><article class="note" id="quick-stuck"><h3>03　卡住時先看「正在等誰」</h3><div class="table-wrap"><table><thead><tr><th>位置</th><th>先確認</th><th>通常怎麼修</th></tr></thead><tbody><tr><td>pull block</td><td>TX 空？送錯 SM？</td><td>檢查送端是否有寫入。</td></tr><tr><td>push block</td><td>RX 滿？</td><td>CPU／RX DMA 持續讀回。</td></tr><tr><td>TX DMA wait</td><td>RX 是否尚未啟動？</td><td>先啟動 TX 與 RX，再等待。</td></tr><tr><td>RX DMA wait</td><td>預期數量是否多於 PIO 真正產出？</td><td>依每筆 push 數重算 rx_count。</td></tr><tr><td>pthread_mutex_lock</td><td>其他路徑是否忘了 unlock？</td><td>檢查 break／return／錯誤處理。</td></tr><tr><td>pthread_join</td><td>worker 是否仍在等鎖或永不結束？</td><td>先修 worker 的終止條件。</td></tr><tr><td>serial.read</td><td>timeout=None 且收不滿？</td><td>使用合適 timeout，保留部分資料。</td></tr><tr><td>ROS callback</td><td>while True／阻塞接收？</td><td>回呼完成後返回，或以合適機制拆開工作。</td></tr></tbody></table></div></article><article class="note" id="quick-checklist"><h3>04　交卷前最後檢查</h3><ul><li><strong>數量：</strong>count 是次數，size 是 bytes／次；索引從 0 開始。</li><li><strong>範圍：</strong>來源與目的都足夠；offset 與額外結果不越界。</li><li><strong>時機：</strong>使用結果前 wait／join；重用前確定沒有人還在讀寫。</li><li><strong>邊界：</strong>0／1 筆、最大值、最後不足一批、flag=0／1 混合。</li><li><strong>穩定：</strong>多跑幾次，不能只靠一次剛好成功；移除干擾資料格式的 log。</li><li><strong>文字題：</strong>寫出錯在哪、會造成什麼、修改為何有效。</li></ul></article></section><section class="page quick-page" id="qbit" aria-labelledby="heading-qbit"><header class="page-head"><p class="eyebrow">考場速查 / 先看修法，再看原理</p><h2 id="heading-qbit" tabindex="-1">位元速查</h2><p class="lead">打包左移、拆解右移；取出用 AND，改寫欄位要先清除。</p></header><article class="note" id="qbit-fields"><h3>01　直接用：拆解與打包</h3><aside class="callout">本模板格式：command 在 bit 0～7、parameter 在 bit 8～14、flag 在 bit 15。word 使用 uint32_t；不同題目先改位元位置。</aside><pre><code>// 拆解：取得三個獨立數值。
-uint32_t command   = word &amp; 0xFFu;
-uint32_t parameter = (word &gt;&gt; 8) &amp; 0x7Fu;
-uint32_t flag      = (word &gt;&gt; 15) &amp; 1u;
-
-// 打包：先檢查範圍，再放到指定位置。
-// command &lt;= 255, parameter &lt;= 127, flag &lt;= 1
-uint32_t packed = command | (parameter &lt;&lt; 8) | (flag &lt;&lt; 15);</code></pre><p>word=0x9234 時，拆出 command=0x34、parameter=0x12、flag=1。&amp;0xF 只留 4 bits，不足以保留 7-bit 參數。</p></article><article class="note" id="qbit-update"><h3>02　只修改 parameter，其餘保留</h3><pre><code>// new_parameter 先確認在 0～127。
-word &amp;= ~(0x7Fu &lt;&lt; 8);          // 清除 bit 8～14
-word |= (new_parameter &lt;&lt; 8);   // 填入新參數</code></pre><p>0x9234 → 清掉參數變 0x8034 → 新參數=1 時得到 0x8134。直接 word |= ... 只會新增 1，不能清除舊的 1。</p></article><article class="note" id="qbit-common"><h3>03　常用操作公式</h3><pre><code>// 以下 x 為 uint32_t；k 在 0～31。
-unsigned bit = (x &gt;&gt; k) &amp; 1u; // 讀第 k 位
-x |= 1u &lt;&lt; k;                // 設成 1
-x &amp;= ~(1u &lt;&lt; k);             // 清成 0
-x ^= 1u &lt;&lt; k;                // 翻轉
-
-// 取出從 bit low 開始的 w bits。
-// 這個公式要求 1 &lt;= w &lt; 32，且 low + w &lt;= 32。
-uint32_t field = (x &gt;&gt; low) &amp; ((1u &lt;&lt; w) - 1u);</code></pre><div class="table-wrap"><table><thead><tr><th>保留低幾位</th><th>遮罩</th><th>例子</th></tr></thead><tbody><tr><td>1</td><td>0x1</td><td>(x >> 15) &amp; 1u</td></tr><tr><td>4</td><td>0xF</td><td>0x65 &amp; 0xF = 0x5</td></tr><tr><td>7</td><td>0x7F</td><td>0x92 &amp; 0x7F = 0x12</td></tr><tr><td>8</td><td>0xFF</td><td>0x1234 &amp; 0xFF = 0x34</td></tr></tbody></table></div></article><article class="note" id="qbit-c-traps"><h3>04　C 最常見的符號誤用</h3><div class="table-wrap"><table><thead><tr><th>需求</th><th>寫法</th><th>注意</th></tr></thead><tbody><tr><td>比較是否相等</td><td>a == b</td><td>a = b 是賦值。</td></tr><tr><td>條件都成立</td><td>a &amp;&amp; b</td><td>&amp; 是逐位運算。</td></tr><tr><td>至少一個條件</td><td>a || b</td><td>| 是逐位運算。</td></tr><tr><td>取得位址</td><td>&amp;x</td><td>傳入指向 x 的指標。</td></tr><tr><td>改指向位置的值</td><td>*p = value</td><td>p 必須指向有效物件。</td></tr><tr><td>檢查遮罩結果</td><td>(word &amp; mask) == expected</td><td>括號避免運算優先序誤解。</td></tr></tbody></table></div><p>參考詳細說明：<a href="#bits">位元與打包</a>、<a href="#c">C 與記憶體</a>。</p></article></section><section class="page quick-page" id="qmove" aria-labelledby="heading-qmove"><header class="page-head"><p class="eyebrow">考場速查 / 先看修法，再看原理</p><h2 id="heading-qmove" tabindex="-1">搬運與索引</h2><p class="lead">先算容量，再排啟動與等待，最後解析與重用資料。</p></header><article class="note" id="qmove-range"><h3>01　count／size／範圍一眼算</h3><div class="table-wrap"><table><thead><tr><th>要算什麼</th><th>公式／判斷</th></tr></thead><tbody><tr><td>總 bytes</td><td>count × size</td></tr><tr><td>uint32_t 元素數量</td><td>sizeof(arr) / sizeof(arr[0])，只適用真正的陣列。</td></tr><tr><td>從 arr[start] 剩幾格</td><td>n - start，先確認 start ≤ n。</td></tr><tr><td>兩端都遞增時，最多搬幾個同型態元素</td><td>min(來源剩餘格數, 目的剩餘格數)。</td></tr><tr><td>對齊</td><td>來源位址 % size == 0，目的也要檢查。</td></tr></tbody></table></div><pre><code>// 題目要求處理 take 個 uint32_t；src_n/dst_n 以元素計。
-// 先檢查起點，再用減法檢查長度，避免 start + take 溢位。
-if (src_start &gt; src_n || dst_start &gt; dst_n) return false;
-if (take &gt; src_n - src_start) return false;
-if (take &gt; dst_n - dst_start) return false;
-// demo 若 count==0 不合法：零筆直接略過工作，不送 configure。</code></pre><p>本段是回傳 bool 的函式內片段；不同 size 或不同型態時，先統一換成 bytes 計算。例：src[10] 從 [2] 剩 8 格，dst[4] 從 [1] 剩 3 格，最多搬 3 個 uint32_t。</p></article><article class="note" id="qmove-engine"><h3>02　Engine 最小模板</h3><pre><code>// ch 已取得；src/dst 有效且足夠、對齊正確；n &gt; 0。
-engine_job_t job = {
-    .src = src, .dst = dst,
-    .count = n, .size = XFER_32,
-    .src_increment = true, .dst_increment = true
-};
-engine_configure(ch, &amp;job);
-engine_start(ch);
-// 可先做不碰這份 src/dst 的獨立工作。
-engine_wait(ch);
-// 此後讀完整 dst，或改寫 src。
-engine_release(ch);</code></pre><p>configure 保存 job 結構，不會深拷貝 src 陣列。release 歸還通道，不會清空 dst。API 是 demo 自訂介面。</p></article><article class="note" id="qmove-order"><h3>03　PIO 雙向搬運：先啟動，再等</h3><pre><code>// 概念 API，需換成題目提供的函式。
-dma_start(rx_ch);
-dma_start(tx_ch);
-dma_wait(tx_ch);
-dma_wait(rx_ch);</code></pre><p>TX：input → TX FIFO，讀位址遞增、寫位址固定。RX：RX FIFO → output，讀位址固定、寫位址遞增。兩邊的 count 分別對應輸入與輸出 word 數，未必相同。</p></article><article class="note" id="qmove-offset"><h3>04　變長回傳：先記起點，再加長度</h3><aside class="callout">練習協定：每筆必回 1 個命令碼，flag=1 再多回 1 個結果。不是所有 PIO 題目都使用這個規則。</aside><pre><code>size_t rx_count = 0;
-for (size_t i = 0; i &lt; n; ++i) {
-    flags[i] = (input[i] &gt;&gt; 15) &amp; 1u;
-    offset[i] = rx_count;
-    rx_count += 1u + flags[i];
-}
-// 啟動 RX 前確認 rx_count &lt;= output 的元素容量。
-// 並確保 rx_count、硬體 count 型態沒有溢位。</code></pre><div class="table-wrap"><table><thead><tr><th>flags</th><th>每筆格數</th><th>offset</th><th>總 rx_count</th></tr></thead><tbody><tr><td>[1, 0, 1]</td><td>[2, 1, 2]</td><td>[0, 2, 3]</td><td>5</td></tr><tr><td>[0, 1, 0, 1]</td><td>[1, 2, 1, 2]</td><td>[0, 1, 3, 4]</td><td>6</td></tr></tbody></table></div><pre><code>// RX 完成後，用同一批的 flags / offset 解析。
-size_t start = offset[i];
-uint32_t command = output[start];
-if (flags[i]) {
-    uint32_t result = output[start + 1];
-    handle_result(i, command, result);
-}</code></pre></article><article class="note" id="qmove-batch"><h3>05　重用時機：等誰完成</h3><div class="table-wrap"><table><thead><tr><th>想做的事</th><th>必要條件</th></tr></thead><tbody><tr><td>重寫 A 的 input 以準備 B</td><td>A 的 TX 完成；另保存 A 解析所需的 flags／其他資料。</td></tr><tr><td>讀取 A 的完整 output</td><td>A 的 RX 完成，且 count／格式正確。</td></tr><tr><td>把共用 offset 換成 B 的</td><td>A 不再需要它，通常要等 A 解析完。</td></tr><tr><td>讓 B 的 RX 寫入同一 output</td><td>A 解析完，不再讀這份 output。</td></tr><tr><td>提早計算 B 的 offset</td><td>使用獨立的 offset_b／flags_b。</td></tr></tbody></table></div><p>A／B 即使回傳總數相同，個別長度也可能不同，不能共用錯批次的 offset。<a href="#dma-batches">看詳細追蹤</a>。</p></article></section><section class="page quick-page" id="qpio" aria-labelledby="heading-qpio"><header class="page-head"><p class="eyebrow">考場速查 / 先看修法，再看原理</p><h2 id="heading-qpio" tabindex="-1">PIO 修法</h2><p class="lead">看資料目前在哪個暫存器，再決定 mov、in、out；不要把 bits 和 bytes 混用。</p></header><article class="note" id="qpio-echo"><h3>01　每筆原樣回傳</h3><pre><code>.program echo
-.wrap_target
-    pull block
-    mov isr, osr
-    push block
-.wrap</code></pre><div class="table-wrap"><table><thead><tr><th>動作</th><th>資料流</th></tr></thead><tbody><tr><td>pull</td><td>TX FIFO → OSR</td></tr><tr><td>mov isr, osr</td><td>OSR 的整個值 → ISR，OSR 保留。</td></tr><tr><td>push</td><td>ISR → RX FIFO</td></tr><tr><td>CPU 讀回</td><td>由板子的 CPU 讀 RX FIFO；不等於直接送到電腦。</td></tr></tbody></table></div><p>pull 必須在循環內。block 表示條件不符就等待；push 卡住先檢查 RX 是否有人讀。</p></article><article class="note" id="qpio-split"><h3>02　拆低 byte：先 0x34，再 0x12</h3><pre><code>// OSR 右移，沒有 autopull；送入 0x00001234。
-pull block
-out x, 8     ; X = 0x34，OSR 剩 0x12
-out y, 8     ; Y = 0x12，OSR 剩 0
-mov isr, x   ; 此處回傳 0x34；改 y 則回傳 0x12
-push block</code></pre><p>8 的單位是 bits。out x, 4 只拿低 4 bits，這例會得到 0x4。若方向設定為左移，就不能沿用右移的追蹤。</p></article><article class="note" id="qpio-host"><h3>03　CPU 如何送一筆、收一筆</h3><pre><code>// Pico SDK C 片段：PIO/SM 已載入 echo 並啟用。
-// 需要 #include &quot;hardware/pio.h&quot;
-pio_sm_put_blocking(pio, sm, 99u);
-uint32_t value = pio_sm_get_blocking(pio, sm);
-// value 應為 99。此流程只示範一筆的驗證。</code></pre><p>大量資料不要先把所有輸入送完才開始讀，可能填滿 RX、使整體卡住。使用配對收送或雙向 DMA，依題目設計。</p></article><article class="note" id="qpio-config"><h3>04　auto 與 pins 的最小對照</h3><pre><code>// c 是 state machine 設定，須之後套用於初始化。
-sm_config_set_out_shift(&amp;c, true, true, 32);
-sm_config_set_in_shift(&amp;c, true, true, 32);
-// 依序：設定、右移、自動功能、門檻 bits。
-
-sm_config_set_in_pins(&amp;c, pin);
-sm_config_set_out_pins(&amp;c, pin, 1);
-sm_config_set_set_pins(&amp;c, pin, 1);</code></pre><p>以上是設定片段，GPIO 還要依用途初始化、設定方向，再初始化／啟用 SM。in pins 讀接腳，out pins 從 OSR 出 bits，set pins 直接設值。想先學基礎看 <a href="#pio">PIO 詳解</a>。</p></article></section><section class="page quick-page" id="qthread" aria-labelledby="heading-qthread"><header class="page-head"><p class="eyebrow">考場速查 / 先看修法，再看原理</p><h2 id="heading-qthread" tabindex="-1">pthread 模板</h2><p class="lead">先以最小正確分工通過測試，再調整批次大小與效能。</p></header><article class="note" id="qthread-worker"><h3>01　完整模板：安全領索引、按原順序輸出</h3><pre><code>#include &lt;stdio.h&gt;
-#include &lt;pthread.h&gt;
-
-#define N 6
-static int input[N] = {10, 20, 30, 40, 50, 60};
-static int result[N];
-static int next = 0;
-static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
-
-static void *worker(void *arg) {
-    (void)arg;
-    for (;;) {
-        pthread_mutex_lock(&amp;lock);
-        if (next &gt;= N) {
-            pthread_mutex_unlock(&amp;lock);
-            break;
-        }
-        int i = next++;
-        pthread_mutex_unlock(&amp;lock);
-        result[i] = input[i] * 2;  // 每個 i 只領到一次
-    }
-    return NULL;
-}
-
-int main(void) {
-    pthread_t threads[2];
-    int created = 0;
-    for (int k = 0; k &lt; 2; ++k) {
-        int rc = pthread_create(&amp;threads[k], NULL, worker, NULL);
-        if (rc != 0) {
-            fprintf(stderr, &quot;pthread_create failed: %d\n&quot;, rc);
-            break;
-        }
-        ++created;
-    }
-    if (created == 0) worker(NULL); // 建立失敗則主執行緒處理
-    for (int k = 0; k &lt; created; ++k)
-        pthread_join(threads[k], NULL);
-    for (int i = 0; i &lt; N; ++i)
-        printf(&quot;%d%c&quot;, result[i], i + 1 == N ? &#x27;\n&#x27; : &#x27; &#x27;);
-    pthread_mutex_destroy(&amp;lock);
-    return 0;
-}</code></pre><p>編譯：<code>gcc -Wall -Wextra -pthread main.c -o demo</code>。預期 20 40 60 80 100 120。模板假設 mutex／join 的使用有效；process 替換後若會碰其他共用資料，需另外保護。</p></article><article class="note" id="qthread-fixes"><h3>02　常見錯誤對照</h3><div class="table-wrap"><table><thead><tr><th>錯誤</th><th>修法與原因</th></tr></thead><tbody><tr><td>next++ 在鎖外</td><td>把判斷、取 i、遞增包在同一把鎖內。</td></tr><tr><td>break 前沒 unlock</td><td>先解鎖再離開，否則其他人一直等。</td></tr><tr><td>只 join A 就印結果</td><td>A、B 都 join 後才使用完整結果。</td></tr><tr><td>所有人傳 &amp;i</td><td>改獨立 args[k]／ids[k]，並保持生命期。</td></tr><tr><td>process 放在鎖內</td><td>若不依賴共用狀態，移到鎖外才能並行。</td></tr><tr><td>counter 用 volatile</td><td>volatile 不提供執行緒同步。</td></tr></tbody></table></div></article><article class="note" id="qthread-args"><h3>03　每個 worker 各自的參數</h3><pre><code>struct Args { int id; int begin; int end; };
-struct Args args[2] = {{0, 0, 3}, {1, 3, 6}};
-// args 宣告在兩個 join 都完成前不會失效的範圍。
-// worker 中：struct Args *a = arg;
-// 處理 for (int i = a-&gt;begin; i &lt; a-&gt;end; ++i)
-// create(..., &amp;args[0]); create(..., &amp;args[1]);</code></pre><p>範圍 [begin,end) 包含 begin，不包含 end。先 create 兩個再 join；先 create A、join A、再 create B 就變成依序做。</p></article></section><section class="page quick-page" id="qros" aria-labelledby="heading-qros"><header class="page-head"><p class="eyebrow">考場速查 / 先看修法，再看原理</p><h2 id="heading-qros" tabindex="-1">ROS 2 修法</h2><p class="lead">先確認節點與 topic，再改 callback。完整 Python 範例保留在後面的詳解。</p></header><article class="note" id="qros-core"><h3>01　節點內的核心模板</h3><pre><code># Node 子類別 __init__ 內；已 import Int32。
-self.pub = self.create_publisher(Int32, &#x27;/double&#x27;, 10)
-self.sub = self.create_subscription(
-    Int32, &#x27;/number&#x27;, self.callback, 10)
-
-# Node 子類別的方法。
-def callback(self, msg):
-    out = Int32()
-    out.data = msg.data * 2
-    self.pub.publish(out)
-
-# main 中建立 node 後：rclpy.spin(node)</code></pre><p><a href="#ros-code">開啟可直接閱讀的完整 Python 程式</a>。數值須符合 Int32 範圍。範例的 /number、/double 是練習名稱，題目改名時要跟著改。</p></article><article class="note" id="qros-errors"><h3>02　看症狀直接修</h3><div class="table-wrap"><table><thead><tr><th>症狀</th><th>先檢查／修法</th></tr></thead><tbody><tr><td>3 → 6 → 12 → 24 一直發</td><td>輸入、輸出是否都用 /number，形成自我回授？</td></tr><tr><td>收到第一筆後就卡住</td><td>callback 裡移除 while True 或無期限等待。</td></tr><tr><td>timer 建立時就先執行</td><td>傳 self.tick，不要 self.tick()。</td></tr><tr><td>callback 從來沒執行</td><td>main 是否有 spin；topic、型態、QoS 是否相容？</td></tr><tr><td>topic 有名字但沒資料</td><td>用 topic info 看是否有 publisher；再 echo。</td></tr><tr><td>多個 subscriber 沒有分攤工作</td><td>同 topic 不是工作佇列；分 topic 或明確指定 ID／分工。</td></tr></tbody></table></div></article><article class="note" id="qros-check"><h3>03　用 CLI 驗證，不急著改程式</h3><pre><code>ros2 node list
-ros2 topic list -t
-ros2 topic info /number
-ros2 topic echo /double
-# 另開一個載入同樣環境的終端機：
-ros2 topic pub --once /number std_msgs/msg/Int32 &quot;{data: 3}&quot;
-# /double 應出現 data: 6</code></pre><p>logger 通常在節點啟動的終端機；launch 也可能存檔。先開 echo 再送 --once，避免測試訊息已送完才開始看。</p></article><article class="note" id="qros-build"><h3>04　建置後的環境要載入</h3><pre><code># Linux/bash；只有考場確實使用 Jazzy 時才用這個路徑。
-source /opt/ros/jazzy/setup.bash
-# 在工作區根目錄；套件名稱自行替換。
-colcon build --symlink-install --packages-select your_package
-# 在新的執行終端機，仍需載入 ROS 與工作區環境。
-source install/setup.bash
-ros2 run your_package your_executable</code></pre><p>若題目有既定 make／run 腳本，優先使用。不要只改檔案後，就假設目前執行的程式已更新；確認建置、安裝入口與工作區環境。</p></article></section><section class="page quick-page" id="qserial" aria-labelledby="heading-qserial"><header class="page-head"><p class="eyebrow">考場速查 / 先看修法，再看原理</p><h2 id="heading-qserial" tabindex="-1">接收與封包</h2><p class="lead">保留不足一筆的尾巴，完整才解析，解析完要移除。</p></header><article class="note" id="qserial-buffer"><h3>01　固定 4 bytes 一筆：接收模板</h3><pre><code>import serial
-
-# port、速率依題目／板子；Linux 也可能是 /dev/ttyACM0。
-with serial.Serial(&#x27;COM3&#x27;, 115200, timeout=0.1) as ser:
-    buffer = bytearray()
-    while True:
-        buffer.extend(ser.read(64))
-        while len(buffer) &gt;= 4:
-            raw = bytes(buffer[:4])
-            del buffer[:4]
-            value = int.from_bytes(raw, &#x27;little&#x27;, signed=False)
-            print(value)</code></pre><aside class="callout">只適用：每筆固定 4 bytes、小端序、無號、起點已對齊且無遺失。其他協定要調整長度、端序與 signed。</aside><p>buffer 放在 while 外。read(n) 可能只拿到部分資料，不可不足 n 就丟棄。buffer[:4] 不會移除；忘記 del 會反覆處理同一筆。</p></article><article class="note" id="qserial-pack"><h3>02　把整數轉成 bytes，與還原</h3><pre><code>value = 0x12345678
-raw = value.to_bytes(4, &#x27;little&#x27;, signed=False)
-print(raw.hex(&#x27; &#x27;))  # 78 56 34 12
-restored = int.from_bytes(raw, &#x27;little&#x27;, signed=False)
-# restored == value</code></pre><p>每筆要先約定 byte 長度、端序、是否有號。Python int 不受 32-bit 限制，但 to_bytes(4,...) 有範圍限制；超出時會失敗，先檢查值。</p></article><article class="note" id="qserial-header"><h3>03　變長封包：長度不等於總長</h3><pre><code># 練習格式：2-byte 小端序 payload 長度 + payload。
-# 放在外層 buffer.extend 之後。
-while len(buffer) &gt;= 2:
-    length = int.from_bytes(buffer[:2], &#x27;little&#x27;)
-    if length &gt; 4096:  # 範例上限，依協定修改
-        raise ValueError(&#x27;invalid length&#x27;)
-    total = 2 + length
-    if len(buffer) &lt; total:
-        break
-    payload = bytes(buffer[2:total])
-    del buffer[:total]
-    handle(payload)</code></pre><p>03 00 AA BB CC：payload 是 3 bytes，整包是 5 bytes。收到 03 00 AA 時要保留並等待，不能把剩下的 BB CC 當新包。這個簡例不處理遺失對齊；實際可依 magic／檢查碼重新同步。</p></article><article class="note" id="qserial-avoid"><h3>04　不要用清空 buffer 解決正常的半包</h3><div class="table-wrap"><table><thead><tr><th>常見操作</th><th>正確理解</th></tr></thead><tbody><tr><td>read(n)</td><td>取走目前讀到的 bytes，timeout 時可能不足 n。</td></tr><tr><td>ser.flush()</td><td>等待輸出寫完，不是清除收到的 bytes。</td></tr><tr><td>ser.reset_input_buffer()</td><td>丟棄接收緩衝中的內容；不要在正常每輪接收時呼叫。</td></tr><tr><td>print／printf 同通道</td><td>文字會混入二進位串流；分通道或明確封裝。</td></tr></tbody></table></div><p>等待時間拉長可能降低半包機率，但不保證封包邊界正確。根本修法是累積與按格式解析。</p></article></section><section class="page quick-page" id="qcmd" aria-labelledby="heading-qcmd"><header class="page-head"><p class="eyebrow">考場速查 / 先看修法，再看原理</p><h2 id="heading-qcmd" tabindex="-1">指令與邊界</h2><p class="lead">不用背全部命令。先定位檔案與環境，再依題目指定的方式編譯執行。</p></header><article class="note" id="qcmd-files"><h3>01　找檔、看檔、找 TODO</h3><pre><code>pwd                       # 目前目錄
-ls                        # 列出檔案
-ls -la                    # 包含隱藏項目與詳細資訊
-cd path/to/project        # 切換到專案
-cat README.md             # 看短檔
-less README.md            # 看長檔，按 q 離開
-rg -n &#x27;TODO|FIXME&#x27; .       # 找待修位置（環境有 rg 時）
-grep -RIn &#x27;TODO&#x27; .        # 沒有 rg 時的替代
-find . -name &#x27;engine.h&#x27;    # 依名稱找檔</code></pre><p>終端執行程式前，先用 pwd／ls 確認位置。Windows PowerShell 不等於 Linux bash；demo 指令需要容器時先進容器。</p></article><article class="note" id="qcmd-build"><h3>02　C 編譯與 GDB</h3><pre><code>gcc -Wall -Wextra -g -pthread main.c -o demo
-./demo
-# 若支援 sanitizer，可用於偵測越界／未定義行為：
-gcc -Wall -Wextra -g -pthread -fsanitize=address,undefined \
-    main.c -o demo_check
-./demo_check
-
-# GDB（環境已安裝時）：
-gdb ./demo
-# break main     在 main 暫停
-# run            啟動
-# next           下一行，通常不進入函式
-# step           進入函式
-# print next     查看變數 next
-# backtrace      看目前的函式呼叫堆疊
-# quit           離開</code></pre><p>以上針對 Linux 主機 C 程式；板子韌體不可直接套用這組主機編譯指令。sanitizer 的可用性依編譯器與執行環境。</p></article><article class="note" id="qcmd-docker"><h3>03　Docker：名稱衝突先看既有容器</h3><pre><code>docker ps                 # 運行中的容器
-docker ps -a              # 包含已停止的容器
-docker start srecruit-demo  # 僅在它已存在且停止時使用
-docker exec -it srecruit-demo bash
-# 在容器內跑題目指定指令；exit 返回原終端。</code></pre><p>同名容器已存在，不必再 docker run --name 建另一個。若正在運行就直接 exec；若停止就先 start。先看狀態再決定，避免刪掉工作資料。</p></article><article class="note" id="qcmd-boundaries"><h3>04　交卷前必測的邊界</h3><div class="table-wrap"><table><thead><tr><th>主題</th><th>至少測這些</th></tr></thead><tbody><tr><td>位元欄位</td><td>command=0／255；parameter=0／127；flag=0／1。</td></tr><tr><td>容量</td><td>從第 0 格、最後一格開始；需求剛好等於剩餘容量。</td></tr><tr><td>批次</td><td>1 筆、最大筆數、最後剩 1～3 筆。</td></tr><tr><td>PIO／DMA</td><td>輸出 1／2 格混合，TX／RX 大量資料不互卡。</td></tr><tr><td>pthread</td><td>重複執行、工作數小於 worker 數、最後不足一批。</td></tr><tr><td>封包</td><td>拆成 1+3、3+3+2 bytes；一次收到兩包；最後只剩部分。</td></tr><tr><td>ROS</td><td>送一次只回一次；topic 型態正確；先 echo 再送。</td></tr></tbody></table></div></article><article class="note" id="qcmd-writing"><h3>05　文字題：三句就講清楚</h3><p><strong>錯誤：</strong>CPU 在 RX 啟動前就等待 TX 全部完成。</p><p><strong>後果：</strong>RX FIFO 滿後 PIO 卡住，進一步讓 TX 填滿，形成互相等待。</p><p><strong>修正：</strong>先啟動 TX、RX，再等待，讓回傳資料能持續被取走。</p><aside class="callout">其他題也照「錯誤 → 後果 → 修正理由」寫，不只貼修改後的程式。</aside></article><article class="note" id="qcmd-refs"><h3>06　查 API 的官方入口</h3><p>API、路徑與編譯方法請配合考場版本。補充內容是常見系統程式工具，不代表全部列入考試。</p><ul><li><a href="https://www.raspberrypi.com/documentation/pico-sdk/hardware.html" target="_blank" rel="noopener">Pico SDK：PIO／DMA</a></li><li><a href="https://github.com/ros2/ros2_documentation/tree/jazzy/source/Tutorials" target="_blank" rel="noopener">ROS 2 Jazzy 官方教學原始文件</a></li><li><a href="https://pyserial.readthedocs.io/en/latest/pyserial_api.html" target="_blank" rel="noopener">pySerial：read、flush、reset_input_buffer</a></li><li><a href="https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html" target="_blank" rel="noopener">GCC：sanitizer 選項</a></li></ul></article></section><section class="page" id="overview" aria-labelledby="heading-overview"><header class="page-head"><p class="eyebrow">上機考準備 / 分類筆記</p><h2 id="heading-overview" tabindex="-1">閱讀起點</h2><p class="lead">先認識整個系統，再從左側選擇正在複習的主題。</p></header><article class="note" id="read-map"><h3>01　這份筆記怎麼看</h3><p>每一類按照「名詞 → 最小例子 → 執行追蹤 → 常見錯誤」整理。程式片段若不是完整程式，會註明前提；實際函式與資料格式仍依題目附檔。</p><div class="table-wrap"><table><thead><tr><th>想解決的問題</th><th>請看分類</th></tr></thead><tbody><tr><td><a href="#c">&、*、陣列從哪裡開始？</a></td><td>C 與記憶體</td></tr><tr><td><a href="#bits">如何取出或改寫 word 的欄位？</a></td><td>位元與打包</td></tr><tr><td><a href="#engine">count、size、ch、wait 是什麼？</a></td><td>Engine 搬運</td></tr><tr><td><a href="#pio">pull、push、pin、OSR／ISR？</a></td><td>PIO 指令</td></tr><tr><td><a href="#dma">TX／RX 如何配合，為什麼卡住？</a></td><td>DMA 與回傳</td></tr><tr><td><a href="#threads">join、鎖、工作分配？</a></td><td>pthread</td></tr><tr><td><a href="#ros">Python 如何訂閱與發布？</a></td><td>ROS 2</td></tr><tr><td><a href="#packets">read 不完整、buffer 如何保留？</a></td><td>序列埠與封包</td></tr><tr><td><a href="#debug">程式有問題時從哪裡查？</a></td><td>除錯速查</td></tr></tbody></table></div></article><article class="note" id="system-map"><h3>02　電腦、板子、PIO 各做什麼</h3><div class="table-wrap"><table><thead><tr><th>角色</th><th>這裡的工作</th></tr></thead><tbody><tr><td>電腦（主機）</td><td>可執行 Python、ROS 2 節點，顯示或整理結果。</td></tr><tr><td>板子的 CPU</td><td>執行板上韌體，設定 PIO／DMA、準備 input、讀取 output。</td></tr><tr><td>PIO</td><td>依自己的專用指令，處理 FIFO 資料或 GPIO 接腳。</td></tr><tr><td>DMA</td><td>依設定搬資料，讓 CPU 不用逐筆讀寫。</td></tr></tbody></table></div><aside class="callout">PIO 的 RX FIFO → 板子記憶體，不等於已經傳到電腦。電腦怎麼收到，還需要題目指定的 USB／UART／網路等通訊方式。</aside><p>使用 PIO 不表示一定使用 micro-ROS；板子的 CPU 與電腦 CPU 是不同的處理器。這次硬體如何連接，仍以考場資料為準。</p></article><article class="note" id="mental-model"><h3>03　先問這三件事</h3><ol><li><strong>資料在哪裡？</strong> input、output、OSR、ISR 還是 FIFO？</li><li><strong>誰正在讀寫？</strong> CPU、DMA、PIO 還是另一個 thread？</li><li><strong>何時才完成？</strong> 要等哪個 wait／join，才能改寫或使用資料？</li></ol><p>Engine 是 demo 的軟體搬運介面，與真正硬體 DMA 分開理解。旗標 bit 15、變長回傳與封包格式，都是我們的練習規則，不是 PIO 自動規定的格式。</p></article><article class="note" id="read-order"><h3>04　考前閱讀順序</h3><p>先讀 C 與記憶體、位元與打包，再看 Engine、PIO、DMA；最後複習 pthread、ROS 2 與封包。每次只讀一個小節，能用自己的話追蹤一筆資料，再繼續下一節。</p><p>原本 16 題練習保留在左側最後一項，已掌握紀錄也沿用。右上角可列印全部筆記，練習題不包含在列印內容。</p></article></section><section class="page" id="c" aria-labelledby="heading-c"><header class="page-head"><p class="eyebrow">上機考準備 / 分類筆記</p><h2 id="heading-c" tabindex="-1">C 與記憶體</h2><p class="lead">先分清楚「值、位址、元素數量、bytes」，後面的搬運才不容易混淆。</p></header><article class="note" id="c-types"><h3>01　資料大小與型態</h3><div class="table-wrap"><table><thead><tr><th>名稱</th><th>意思</th></tr></thead><tbody><tr><td>bit</td><td>一個 0 或 1。</td></tr><tr><td>byte</td><td>此練習環境 1 byte = 8 bits。</td></tr><tr><td>uint8_t／uint16_t／uint32_t</td><td>無號整數，分別佔 1／2／4 bytes。</td></tr><tr><td>uint64_t</td><td>8 bytes 無號整數，適合較大的加總。</td></tr><tr><td>word</td><td>大小依規格；此處 PIO FIFO 範例的 word 是 32 bits = 4 bytes。</td></tr><tr><td>size_t</td><td>C 用於大小、數量的無號整數型態；sizeof 的結果就是這個型態。</td></tr></tbody></table></div><p><code>u</code> 是 unsigned 標記，例如 <code>1u</code>。<code>0x</code> 表示十六進位，例如 <code>0x10 = 16</code>。</p></article><article class="note" id="c-pointers"><h3>02　& 取得位址，* 存取那個位置</h3><pre><code>uint32_t x = 10;
+<aside class="sidebar" id="sidebar"><div class="sidebar-top"><a class="brand" href="#overview"><span class="brand-mark">XM</span><span>上機筆記<small>NCKU CSIE · 116</small></span></a><button type="button" id="menu" aria-controls="chapter-nav" aria-expanded="false">分類目錄 <span>⌄</span></button></div><div class="sidebar-body" id="chapter-nav"><p class="nav-label">筆記分類</p><nav aria-label="筆記分類"><a href="#overview" data-page="overview"><span class="nav-no">00</span><span>閱讀起點</span></a><a href="#c" data-page="c"><span class="nav-no">01</span><span>C 與記憶體</span></a><a href="#bits" data-page="bits"><span class="nav-no">02</span><span>位元與打包</span></a><a href="#engine" data-page="engine"><span class="nav-no">03</span><span>Engine 搬運</span></a><a href="#pio" data-page="pio"><span class="nav-no">04</span><span>PIO 指令</span></a><a href="#dma" data-page="dma"><span class="nav-no">05</span><span>DMA 與回傳</span></a><a href="#threads" data-page="threads"><span class="nav-no">06</span><span>pthread</span></a><a href="#ros" data-page="ros"><span class="nav-no">07</span><span>ROS 2</span></a><a href="#packets" data-page="packets"><span class="nav-no">08</span><span>序列埠與封包</span></a><a href="#debug" data-page="debug"><span class="nav-no">09</span><span>除錯速查</span></a><a href="#practice" data-page="practice"><span class="nav-no">10</span><span>練習題</span></a></nav><div class="sidebar-bottom"><p>看懂資料的位置，<br>再看誰讀寫、何時完成。</p><span>整理於 2026.11.12</span></div></div></aside>
+<div class="workspace"><header class="toolbar"><div><span class="status-dot"></span><span id="current-category">閱讀起點</span></div><button type="button" id="print">列印全部筆記</button></header><div class="reading-layout"><main id="main"><section class="page" id="overview" aria-labelledby="heading-overview"><header class="page-head"><p class="eyebrow">上機考準備 / 分類筆記</p><h2 id="heading-overview" tabindex="-1">閱讀起點</h2><p class="lead">先認識整個系統，再從左側選擇正在複習的主題。</p></header><article class="note" id="read-map"><h3>01　這份筆記怎麼看</h3><p>每一類按照「名詞 → 最小例子 → 執行追蹤 → 常見錯誤」整理。程式片段若不是完整程式，會註明前提；實際函式與資料格式仍依題目附檔。</p><div class="table-wrap"><table><thead><tr><th>想解決的問題</th><th>請看分類</th></tr></thead><tbody><tr><td><a href="#c">&、*、陣列從哪裡開始？</a></td><td>C 與記憶體</td></tr><tr><td><a href="#bits">如何取出或改寫 word 的欄位？</a></td><td>位元與打包</td></tr><tr><td><a href="#engine">count、size、ch、wait 是什麼？</a></td><td>Engine 搬運</td></tr><tr><td><a href="#pio">pull、push、pin、OSR／ISR？</a></td><td>PIO 指令</td></tr><tr><td><a href="#dma">TX／RX 如何配合，為什麼卡住？</a></td><td>DMA 與回傳</td></tr><tr><td><a href="#threads">join、鎖、工作分配？</a></td><td>pthread</td></tr><tr><td><a href="#ros">Python 如何訂閱與發布？</a></td><td>ROS 2</td></tr><tr><td><a href="#packets">read 不完整、buffer 如何保留？</a></td><td>序列埠與封包</td></tr><tr><td><a href="#debug">程式有問題時從哪裡查？</a></td><td>除錯速查</td></tr></tbody></table></div></article><article class="note" id="system-map"><h3>02　電腦、板子、PIO 各做什麼</h3><div class="table-wrap"><table><thead><tr><th>角色</th><th>這裡的工作</th></tr></thead><tbody><tr><td>電腦（主機）</td><td>可執行 Python、ROS 2 節點，顯示或整理結果。</td></tr><tr><td>板子的 CPU</td><td>執行板上韌體，設定 PIO／DMA、準備 input、讀取 output。</td></tr><tr><td>PIO</td><td>依自己的專用指令，處理 FIFO 資料或 GPIO 接腳。</td></tr><tr><td>DMA</td><td>依設定搬資料，讓 CPU 不用逐筆讀寫。</td></tr></tbody></table></div><aside class="callout">PIO 的 RX FIFO → 板子記憶體，不等於已經傳到電腦。電腦怎麼收到，還需要題目指定的 USB／UART／網路等通訊方式。</aside><p>使用 PIO 不表示一定使用 micro-ROS；板子的 CPU 與電腦 CPU 是不同的處理器。這次硬體如何連接，仍以考場資料為準。</p></article><article class="note" id="mental-model"><h3>03　先問這三件事</h3><ol><li><strong>資料在哪裡？</strong> input、output、OSR、ISR 還是 FIFO？</li><li><strong>誰正在讀寫？</strong> CPU、DMA、PIO 還是另一個 thread？</li><li><strong>何時才完成？</strong> 要等哪個 wait／join，才能改寫或使用資料？</li></ol><p>Engine 是 demo 的軟體搬運介面，與真正硬體 DMA 分開理解。旗標 bit 15、變長回傳與封包格式，都是我們的練習規則，不是 PIO 自動規定的格式。</p></article><article class="note" id="read-order"><h3>04　考前閱讀順序</h3><p>先讀 C 與記憶體、位元與打包，再看 Engine、PIO、DMA；最後複習 pthread、ROS 2 與封包。每次只讀一個小節，能用自己的話追蹤一筆資料，再繼續下一節。</p><p>原本 16 題練習保留在左側最後一項，已掌握紀錄也沿用。右上角可列印全部筆記，練習題不包含在列印內容。</p></article></section><section class="page" id="c" aria-labelledby="heading-c"><header class="page-head"><p class="eyebrow">上機考準備 / 分類筆記</p><h2 id="heading-c" tabindex="-1">C 與記憶體</h2><p class="lead">先分清楚「值、位址、元素數量、bytes」，後面的搬運才不容易混淆。</p></header><article class="note" id="c-types"><h3>01　資料大小與型態</h3><div class="table-wrap"><table><thead><tr><th>名稱</th><th>意思</th></tr></thead><tbody><tr><td>bit</td><td>一個 0 或 1。</td></tr><tr><td>byte</td><td>此練習環境 1 byte = 8 bits。</td></tr><tr><td>uint8_t／uint16_t／uint32_t</td><td>無號整數，分別佔 1／2／4 bytes。</td></tr><tr><td>uint64_t</td><td>8 bytes 無號整數，適合較大的加總。</td></tr><tr><td>word</td><td>大小依規格；此處 PIO FIFO 範例的 word 是 32 bits = 4 bytes。</td></tr><tr><td>size_t</td><td>C 用於大小、數量的無號整數型態；sizeof 的結果就是這個型態。</td></tr></tbody></table></div><p><code>u</code> 是 unsigned 標記，例如 <code>1u</code>。<code>0x</code> 表示十六進位，例如 <code>0x10 = 16</code>。</p></article><article class="note" id="c-pointers"><h3>02　& 取得位址，* 存取那個位置</h3><pre><code>uint32_t x = 10;
 uint32_t *p = &amp;x;
 *p = 99;  // x 現在變成 99</code></pre><div class="table-wrap"><table><thead><tr><th>這個寫法</th><th>讀法</th></tr></thead><tbody><tr><td>x</td><td>變數裡的值。</td></tr><tr><td>&x</td><td>x 在記憶體中的位址。</td></tr><tr><td>p</td><td>存著 x 位址的指標。</td></tr><tr><td>*p</td><td>讀取或修改 p 指向的位置，也就是 x。</td></tr></tbody></table></div><p>宣告中的 <code>uint32_t *p</code> 表示 p 是指標。<code>*command = ...</code> 則是把計算結果寫入 command 指向的變數；不是乘法。</p></article><article class="note" id="c-array"><h3>03　陣列索引從 0 開始</h3><pre><code>uint32_t src[10];
 // 合法索引：0, 1, 2, 3, 4, 5, 6, 7, 8, 9
@@ -563,37 +365,8 @@ docker exec -it srecruit-demo bash</code></pre><p>容器名稱已存在時，可
   document.querySelector('.to-top').addEventListener('click', event => {
     event.preventDefault(); window.scrollTo({top:0,behavior:'smooth'});
   });
-  document.querySelector('#print').addEventListener('click', () => { document.body.classList.remove('print-quick'); window.print(); });
+  document.querySelector('#print').addEventListener('click', () => window.print());
   window.addEventListener('hashchange', () => show(location.hash, true));
-  document.querySelector('#print-quick').addEventListener('click', () => {
-    document.body.classList.add('print-quick');
-    window.print();
-  });
-  window.addEventListener('afterprint', () => document.body.classList.remove('print-quick'));
-  // 點同頁分類也返回頂端；hash 不變時不會觸發 hashchange。
-  document.querySelectorAll('[data-page]').forEach(link => link.addEventListener('click', () => {
-    if (location.hash === link.hash) show(location.hash, true);
-  }));
-  document.querySelectorAll('pre').forEach(pre => {
-    const button = document.createElement('button');
-    button.type = 'button'; button.className = 'copy-code'; button.textContent = '複製';
-    button.setAttribute('aria-label', '複製這段程式碼');
-    button.addEventListener('click', async () => {
-      const text = pre.querySelector('code').textContent;
-      try {
-        if (!navigator.clipboard?.writeText) throw new Error('clipboard unavailable');
-        await navigator.clipboard.writeText(text);
-        button.textContent = '已複製';
-      } catch {
-        const selection = window.getSelection();
-        const range = document.createRange(); range.selectNodeContents(pre.querySelector('code'));
-        selection.removeAllRanges(); selection.addRange(range);
-        button.textContent = '已選取，請複製';
-      }
-      setTimeout(() => button.textContent = '複製', 2200);
-    });
-    pre.append(button);
-  });
   show(location.hash);
 })();
 
